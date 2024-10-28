@@ -14,13 +14,13 @@ async fn main() {
     //create topic
     let topic = format!("podc/v1/devices/{}", pod);
 
-    let client = establishclient(pod, address, port, topic.clone()).await;
+    let client = establishclient(pod, address, port).await;
+    sub(client.clone(), topic.clone());
      loop {
         let mut message = String::new();
         print!("Enter message to send: ");
         io::stdout().flush().unwrap(); // Ensure the prompt prints immediately
         io::stdin().read_line(&mut message).unwrap();
-        //let mqtt_client = establishclient(pod.clone(), address.clone(), port, topic.clone());
         let input = message.clone();
         let pub_topic = topic.clone();
 
