@@ -15,7 +15,7 @@ async fn main() {
     let topic = format!("podc/v1/devices/{}", pod);
 
     let client = establishclient(pod, address, port).await;
-    sub(client.clone(), topic.clone());
+    sub(client.clone(), topic.clone()).await;
      loop {
         let mut message = String::new();
         print!("Enter message to send: ");
